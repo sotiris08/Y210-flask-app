@@ -12,7 +12,7 @@
 
 ## Live Demo
 
-! [image](https://user-images.githubusercontent.com/62189294/173043044-8cf46749-573f-441a-b2fd-e04698dfcb4a.png)
+![image](https://user-images.githubusercontent.com/62189294/173064754-6f1b62d3-5ace-46c8-b8e4-27c4b5dd5194.png)
 
 <ul>
   <li>https://flaskapp.sveronis.net/</li> ή
@@ -272,12 +272,18 @@ python app.py
 1. Μεταβαίνουμε στο [Google Cloud Platform](https://console.cloud.google.com/)
 2. Επιλέγουμε το project που θέλουμε να χρησιμοποιήσουμε ή δημιουργούμε ένα νέο
 3. Επιλέγουμε `Navigation menu`>`APIs & Services`>`Credentials`
-4. Επιλέγουμε `Create Credentials`>`OAuth client ID`![image](https://user-images.githubusercontent.com/62189294/173060712-6de4e576-9717-4118-85d1-be1d74055528.png)
+4. Επιλέγουμε `Create Credentials`>`OAuth client ID`
+
+![image](https://user-images.githubusercontent.com/62189294/173060712-6de4e576-9717-4118-85d1-be1d74055528.png)
 
 5. Ίσως σας ζητηθεί να δημιουργίσετε μία `OAuth consent screen`
-6. Επιλέγουμε `Application type`:`Web application` και ένα όνομα. ![image](https://user-images.githubusercontent.com/62189294/173060944-b0325ed8-02e9-4d07-97ae-eec1daaf81c7.png)
+6. Επιλέγουμε `Application type`:`Web application` και ένα όνομα.
+ 
+![image](https://user-images.githubusercontent.com/62189294/173060944-b0325ed8-02e9-4d07-97ae-eec1daaf81c7.png)
 
-7. Ως `Authorized redirect URIs` εισάγουμε `https://example.com/signInWithGoogle/auth` ή `http://example.com/signInWithGoogle/auth` αν ή εφαρμογή είναι ακόμα σε testing mode ![image](https://user-images.githubusercontent.com/62189294/173061912-460b8e69-5d91-4451-8b58-318b40ffb278.png)
+7. Ως `Authorized redirect URIs` εισάγουμε `https://example.com/signInWithGoogle/auth` ή `http://example.com/signInWithGoogle/auth` αν ή εφαρμογή είναι ακόμα σε testing mode
+ 
+![image](https://user-images.githubusercontent.com/62189294/173061912-460b8e69-5d91-4451-8b58-318b40ffb278.png)
 
 8. Επιλέγουμε `Create`
 9. Στο παράθυρο που εμφανίζεται υπάρχει το `GOOGLE_CLIENT_ID` και μπορούμε να αποθηκεύσουμε το CLIENT SECRET
