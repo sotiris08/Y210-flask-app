@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Delete Your Account
+{% endblock title %}
+
+{% block body %}
+  <div class="row">
+      <div class="row" style="width: 100%; text-align: center">
+          <h1>Delete Your Account</h1>
+      </div>
+      <div class="row" style="width: 100%; text-align: center">
+          <h6 style="color: gray">It's sad to see you going...</h6>
+      </div>
+      {% if current_user.provider == 'password'%}
+          <div class="row" style="width: 100%; text-align: center">
+              <h5 style="color: gray">Please re-enter your password to delete the account.</h5>
+          </div>
+      {% endif %}
+  </div>
+
+  <div class="row" style="height: 100px"></div>
+
+    <form action="#" method="post">
+        <div>
+          {{ form.hidden_tag() }}
+          {% if current_user.provider == 'password'%}
+              <div class="form-floating mb-3" style="margin-left: 15%; margin-right: 15%">
+                  {{ form.current_password(class="form-control", id="floatingPassword", placeholder="Password", type="password") }}
+                  {{ form.current_password.label(for="floatingPassword") }}
+
+                  {% if form.current_password.errors %}
+                      <div class="alert alert-danger" role="alert">
+                        <ul>
+                            {% for e in form.password.errors %}
+                                <li>
+                                    {{ e | safe }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                      </div>
+                  {% endif %}
+              </div>
+          {% endif %}
+
+          <div class="form-floating">
+              <!--<button class="btn btn-primary" style="margin-left: 15%; margin-right: 15%; width: 70%; height: 60px; font-size: 20px" type="button">Change Password</button>-->
+              {{ form.submit(class="btn btn-danger", style="margin-left: 15%; margin-right: 15%; width: 70%; height: 60px; font-size: 20px") }}
+          </div>
+      </div>
+    </form>
+    <a href="{{ url_for('dashboard') }}"><button type="button" class="btn btn-outline-secondary" style="width: 70%; height: 60px; font-size: 20px; text-align: center; margin-top: 25px; margin-left: 15%; margin-right: 15%">Back to Dashboard</button></a>
+{% endblock body %}

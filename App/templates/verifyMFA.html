@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Multi-factor authentication
+{% endblock title %}
+
+{% block body %}
+    <div class="row">
+        <div class="row" style="width: 100%; text-align: center">
+            <h1>Multi-factor authentication</h1>
+        </div>
+        <div class="row" style="width: 100%; text-align: center">
+            <h6 style="color: gray">Please enter the MFA code</h6>
+        </div>
+    </div>
+
+    <div class="row" style="height: 200px"></div>
+
+    <form class="row". style="margin-top: 5px", action="#", method="post">
+        {{ form.hidden_tag() }}
+      <div class="form-floating mb-6", style="margin-left: 25%; width: 200px">
+        <!--<input type="text" class="form-control" id="floatingInput" placeholder="MFA Code">
+          <label for="floatingInput" >MFA Code</label>-->
+          {{ form.MFACode(class="form-control", id="floatingInput", placeholder="MFA Code") }}
+          {{ form.MFACode.label(for="floatingInput") }}
+
+          {% if form.MFACode.errors %}
+              <div class="alert alert-danger" role="alert">
+                <ul>
+                    {% for e in form.email.errors %}
+                        <li>
+                            {{ e | safe }}
+                        </li>
+                    {% endfor %}
+                </ul>
+              </div>
+          {% endif %}
+
+      </div>
+      <div class="form-floating mb-6", style="margin-right: 2%; width: 200px">
+        <!--<button type="submit" class="btn btn-primary mb-3" style="height: 60px">Confirm MFA Code</button>-->
+          {{ form.submit(class="btn btn-primary mb-3", style="height: 60px") }}
+      </div>
+    </form>
+    <a href="/verifyMFAViaEmail?token={{ token }}" style="float: right; margin-right: 15%; margin-top: 10px; margin-bottom: 10px">Send code via email and disable MFA</a>
+    <a href="{{ url_for('signin') }}"><button type="button" class="btn btn-outline-secondary" style="width: 70%; height: 60px; font-size: 20px; text-align: center; margin-top: 10px; margin-left: 15%; margin-right: 15%">Cancel</button></a>
+{% endblock body %}

@@ -1,0 +1,13 @@
+{% extends "email_base.html" %}
+
+{% block body %}
+    <div style="padding-top: 20px; font-size: 50px; font-family: Arial">
+        <h1>Great news {{name}}!</h1>
+        <h5 style="margin-top: -10px">Your account has been created successfully!</h5>
+    </div>
+    <div style="padding-top: 50px; padding-bottom: 50px; font-size: 25px; font-family: Arial">
+        This email is just to let you know that your account has been created successfully!
+        <br>
+        Thank you!
+    </div>
+{% endblock body %}

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}
+Create your account
+{% endblock title %}
+
+{% block body %}
+<div class="row">
+    <div class="row" style="width: 100%; text-align: center">
+        <h1>Welcome!</h1>
+    </div>
+    <div class="row" style="width: 100%; text-align: center">
+        <h6 style="color: gray">Create your account</h6>
+    </div>
+</div>
+
+<div class="row" style="height: 50px"></div>
+
+
+<form action="{{ url_for('signUpWithEmailAndPassword') }}", method="post">
+    <div>
+        {{ form.hidden_tag() }}
+        <div class="form-floating mb-3" style="margin-left: 15%; margin-right: 15%">
+          <!--<input type="text" class="form-control" id="floatingNameInput" placeholder="Name">
+          <label for="floatingInput">Name</label>-->
+          {{ form.name(class="form-control", id="floatingNameInput", placeholder="Name", type="text") }}
+          {{ form.name.label(for="floatingNameInput") }}
+
+          {% if form.name.errors %}
+              <div class="alert alert-danger" role="alert">
+                <ul>
+                    {% for e in form.name.errors %}
+                        <li>
+                            {{ e | safe }}
+                        </li>
+                    {% endfor %}
+                </ul>
+              </div>
+          {% endif %}
+        </div>
+
+        <div class="form-floating mb-3" style="margin-left: 15%; margin-right: 15%">
+          <!--<input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>-->
+          {{ form.email(class="form-control", id="floatingInput", placeholder="name@example.com", type="email") }}
+          {{ form.email.label(for="floatingInput") }}
+
+          {% if form.email.errors %}
+              <div class="alert alert-danger" role="alert">
+                <ul>
+                    {% for e in form.email.errors %}
+                        <li>
+                            {{ e | safe }}
+                        </li>
+                    {% endfor %}
+                </ul>
+              </div>
+          {% endif %}
+
+        </div>
+
+        <div class="form-floating mb-3" style="margin-left: 15%; margin-right: 15%">
+          <!--<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>-->
+          {{ form.password(class="form-control", id="floatingPassword", placeholder="Password", type="password") }}
+          {{ form.password.label(for="floatingPassword") }}
+
+          {% if form.password.errors %}
+              <div class="alert alert-danger" role="alert">
+                <ul>
+                    {% for e in form.password.errors %}
+                        <li>
+                            {{ e | safe }}
+                        </li>
+                    {% endfor %}
+                </ul>
+              </div>
+          {% endif %}
+
+        </div>
+
+        <div class="form-floating mb-3" style="margin-left: 15%; margin-right: 15%">
+          <!--<input type="password" class="form-control" id="floatingPassword2" placeholder="Password">
+          <label for="floatingPassword2">Repeat password</label>-->
+          {{ form.password2(class="form-control", id="floatingPassword2", placeholder="Password", type="password") }}
+          {{ form.password2.label(for="floatingPassword2") }}
+
+          {% if form.password2.errors %}
+              <div class="alert alert-danger" role="alert">
+                <ul>
+                    {% for e in form.password2.errors %}
+                        <li>
+                            {{ e | safe }}
+                        </li>
+                    {% endfor %}
+                </ul>
+              </div>
+          {% endif %}
+
+        </div>
+
+        <div class="form-floating">
+          <!--<button class="btn btn-primary" style="margin-left: 15%; margin-right: 15%; width: 70%; height: 60px; font-size: 20px" type="button">Sign In</button>-->
+          {{ form.submit(class="btn btn-primary", style="margin-left: 15%; margin-right: 15%; width: 70%; height: 60px; font-size: 20px") }}
+        </div>
+    </div>
+</form>
+
+{% endblock body %}

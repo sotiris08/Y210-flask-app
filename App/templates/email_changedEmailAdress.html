@@ -1,0 +1,12 @@
+{% extends "email_base.html" %}
+
+{% block body %}
+    <div style="padding-top: 20px; font-size: 50px; font-family: Arial">
+        <h1>Hi {{name}}!</h1>
+        <h5 style="margin-top: -10px">Your account has been updated successfully!</h5>
+    </div>
+    <div style="padding-top: 50px; padding-bottom: 50px; font-size: 25px; font-family: Arial">
+        Your email address has been changed from {{old_email}} to {{email}}<br><br>
+        This email is just to let you know that the process was successful
+    </div>
+{% endblock body %}

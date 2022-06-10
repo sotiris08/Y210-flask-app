@@ -1,0 +1,68 @@
+{% extends 'dashboard_base.html' %}
+
+{% block title %}
+Admin Dashboard
+{% endblock title %}
+
+{% block meta %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock meta %}
+
+{% block body %}
+
+    {% include 'verifyEmailAlert.html' %}
+
+    {% include 'enableOTPAlert.html' %}
+
+    <div class="alert alert-info alert-das-pos align-items-center" role="alert">
+      <div class="row">
+            <div class="war-col-svg col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                </svg>
+            </div>
+            <div class="war-col-txt col">
+                <h2 class="alert-heading" >Welcome to the admin dashboard!</h2>
+            </div>
+        </div>
+      <p>Aww yeah, you have successfully accessed the admin dashboard. In here you can find information about all the accounts.</p>
+      <hr>
+      <p class="mb-0">So... <br> Have a look around...</p>
+    </div>
+
+    <div class="card card-das-pos">
+      <div class="card-header">
+        Accounts
+      </div>
+      <div class="card-body">
+        <div class="container">
+            <ul class="list-group">
+                {% for user in users %}
+                    <li class="list-group-item">
+                        <div class="row" style="margin-bottom: 20px">
+                            <div class="col-md-3">
+                                {{user.name}}
+                            </div>
+                            <div class="col-md-3">
+                                {{user.email}}
+                            </div>
+                            <div class="col-md-6">
+                                <div class="btn-group" role="group" aria-label="Basic outlined example">
+                                    <a href="/admin/edit?item=Name&user={{user.uuid}}"><button type="button" class="btn btn-outline-warning">Change Name</button></a>
+                                    {% if user.provider == 'password' %}
+                                        <a href="/admin/edit?item=Email&user={{user.uuid}}"><button type="button" class="btn btn-outline-warning">Change Email</button></a>
+                                    {% endif %}
+                                    {% if user.isOTPEnabled %}
+                                        <a href="/admin/change?item=Disable MFA&user={{user.uuid}}"><button type="button" class="btn btn-outline-warning">Disable MFA</button></a>
+                                    {% endif %}
+                                    <a href="/admin/change?item=Delete Account&user={{user.uuid}}"><button type="button" class="btn btn-outline-danger">Delete account</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div>
+{% endblock body %}

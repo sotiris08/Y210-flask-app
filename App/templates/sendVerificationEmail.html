@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Verify your email
+{% endblock title %}
+
+{% block body %}
+<div class="row" style="margin-top: -100px">
+    <div class="row" style="width: 100%; text-align: center">
+        <h1>Time to verify your email!</h1>
+    </div>
+    <div class="row" style="width: 100%; text-align: center">
+        <h6 style="color: gray">A verification email has been sent.</h6>
+    </div>
+    <div class="row" style="width: 100%; text-align: center; margin-top: 100px">
+        <h5 style="color: gray">An email with a verification link has been sent to the address {{ current_user.email }}. Although we are not a spam, please do check your junk folder. (We won't get mad.)<br><br>You will be redirected back to the dashboard page in 30 seconds. <br> If that doesn't happen you can click the button below.</h5>
+    </div>
+    <div class="row" style="text-align: center; margin-top: 25px">
+        <a href="{{ url_for('dashboard') }}"><button type="button" class="btn btn-outline-secondary" style="width: 400px; height: 50px;">Go to the dashboard</button></a>
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/sendVerificationEmail.js') }}"></script>
+{% endblock body %}

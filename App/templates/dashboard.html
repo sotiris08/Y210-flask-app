@@ -1,0 +1,136 @@
+{% extends "dashboard_base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block meta %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock meta %}
+
+{% block body %}
+
+    {% include 'verifyEmailAlert.html' %}
+
+    {% include 'enableOTPAlert.html' %}
+
+    <div class="alert alert-info alert-das-pos align-items-center" role="alert">
+      <div class="row">
+            <div class="war-col-svg col">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                </svg>
+            </div>
+            <div class="war-col-txt col">
+                <h2 class="alert-heading" >Welcome to the dashboard!</h2>
+            </div>
+        </div>
+      <p>Aww yeah, you have successfully accessed the dashboard. In here you can find and edit basic information about your account.</p>
+      <hr>
+      <p class="mb-0">So... <br> Have a look around...</p>
+    </div>
+
+    <div class="card card-das-pos">
+      <div class="card-header">
+        Account Setting
+      </div>
+      <div class="card-body">
+        <div class="container">
+            <form action="{{ url_for('changeName') }}", method="post">
+                {{ formName.hidden_tag() }}
+                <div class="row">
+                    <div class="col-md-2">
+                      <!--<label for="inputText" class="labels col-sm-2 col-form-label">Name</label>-->
+                        {{ formName.name.label(for="inputText", class="labels col-sm-2 col-form-label") }}
+                    </div>
+                    <div class="col-md-8">
+                      <!--<input type="Text" disabled class="form-control" id="name-input" placeholder="Name">-->
+                        {{ formName.name(type="Text", disabled=True, class="form-control", id="name-input", placeholder="Name") }}
+
+                        {% if formName.name.errors %}
+                          <div class="alert alert-danger" role="alert">
+                            <ul>
+                                {% for e in formName.name.errors %}
+                                    <li>
+                                        {{ e | safe }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                          </div>
+                        {% endif %}
+
+                    </div>
+                    <div class="col-md-2">
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                          <!--<button type="button" class="btn btn-outline-success">Save</button>-->
+                            {{ formName.submit(type="button", class="btn btn-outline-success", id="name-submit") }}
+                            <button type="button" class="btn btn-outline-primary" id="name-edit">Edit</button>
+                          <button type="button" class="btn btn-outline-danger" id="name-discard">Discard Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form action="{{ url_for('changeEmail') }}", method="post">
+                {{ formEmail.hidden_tag() }}
+              <div class="row">
+                <div class="col-md-2">
+                  <!--<label for="inputText" class="labels col-sm-2 col-form-label">Email</label>-->
+                    {{ formEmail.email.label(for="inputText", class="labels col-sm-2 col-form-label") }}
+                </div>
+                <div class="col-md-8">
+                  <!--<input type="Text" disabled class="form-control" id="email-input" placeholder="Email">-->
+                    {{ formEmail.email(type="Text", disabled=True, class="form-control", id="email-input", placeholder="Email") }}
+                </div>
+                <div class="col-md-2">
+                    {% if current_user.provider == 'password'%}
+                        <div class="btn-group" role="group" aria-label="Basic outlined example">
+                          <!--<button type="button" class="btn btn-outline-success">Save</button>-->
+                            {{ formEmail.submit(type="button", class="btn btn-outline-success", id="email-submit") }}
+                          <button type="button" class="btn btn-outline-primary" id="email-edit">Edit</button>
+                          <button type="button" class="btn btn-outline-danger" id="email-discard">Discard Edit</button>
+                        </div>
+                    {% endif %}
+                </div>
+              </div>
+
+              <div class="row">
+                  {% if current_user.isOTPEnabled %}
+                      <div class="col-md-6">
+                          <a href="{{ url_for('editMFA') }}"><button type="button" class="btn btn-mng-acc btn-outline-info">Edit MFA</button></a>
+                      </div>
+                      <div class="col-md-6">
+                          <a href="{{ url_for('disableMFA') }}"><button type="button" class="btn btn-mng-acc btn-outline-danger">Disable MFA</button></a>
+                      </div>
+                  {% else %}
+                      <div class="col-md-12">
+                          {% if current_user.isEmailVerified %}
+                            <a href="{{ url_for('enableMFA') }}"><button type="button" class="btn btn-mng-acc btn-outline-success">Enable Multi-factor authentication</button></a>
+                          {% else %}
+                            <button type="button" disabled class="btn btn-mng-acc btn-outline-success">Enable Multi-factor authentication</button>
+                            <div class="col-md-12" style="margin-top: 7px; color: red; text-align: center">
+                                You cannot enable MFA if you don't verify your email first.
+                            </div>
+                          {% endif %}
+                      </div>
+                  {% endif %}
+              </div>
+
+              <div class="row">
+                  <div class="col-md-6">
+                      {% if current_user.provider == 'password'%}
+                        <a href="{{ url_for('changePassword') }}"><button type="button" class="btn btn-mng-acc btn-outline-warning">Change Password</button></a>
+                      {% endif %}
+                  </div>
+                  <div class="col-md-6">
+                      <a href="{{ url_for('deleteAccount') }}"><button type="button" class="btn btn-mng-acc btn-outline-danger">Delete Account</button></a>
+                  </div>
+              </div>
+            </form>
+
+        </div>
+      </div>
+    </div>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock body %}

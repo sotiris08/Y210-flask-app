@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+Welcome!
+{% endblock title %}
+
+{% block meta %}
+    <link   rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous">
+    </script>
+{% endblock meta %}
+
+{% block body %}
+<div class="row">
+    <div class="row" style="width: 100%; text-align: center">
+        <h1>Welcome!</h1>
+    </div>
+    <div class="row" style="width: 100%; text-align: center">
+        <h6 style="color: gray">Please sign in</h6>
+    </div>
+</div>
+
+{{ current_user.uuid }}
+
+<div class="row" style="height: 200px"></div>
+
+<div class="row" style="margin-left: 15%; margin-right: 10%;">
+    <div class="col-md-6" style="width: 50%;">
+      <a href="{{ url_for('signin') }}"><button class="btn btn-primary" style="width: 75%" type="button">Sign in</button></a>
+    </div>
+    <div class="col-md-6" style="width: 50%;">
+      <a href="{{ url_for('signup') }}"><button class="btn btn-outline-primary" style="width: 75%" type="button">Sign Up</button></a>
+    </div>
+</div>
+<div class="row" style="margin-left: 25%; margin-right: 25%; margin-top: 25px">
+    <div id="my-signin2">
+        {% include 'GoogleBtn.html' %}
+    </div>
+</div>
+
+{% endblock body %}

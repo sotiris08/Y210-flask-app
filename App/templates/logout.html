@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Logout
+{% endblock title %}
+
+{% block body %}
+    <div class="row">
+        <div class="row" style="width: 100%; text-align: center">
+            <h1>See you again!</h1>
+        </div>
+        <div class="row" style="width: 100%; text-align: center">
+            <h6 style="color: gray">You have successfully logged out.</h6>
+        </div>
+        <div class="row" style="width: 100%; text-align: center; margin-top: 100px">
+            <h5 style="color: gray">You will be redirected back to the login page in 30 seconds. <br> If that doesn't happen you can click the button below.</h5>
+        </div>
+        <div class="row" style="text-align: center; margin-top: 25px">
+            <a href="{{ url_for('root') }}"><button type="button" class="btn btn-outline-secondary" style="width: 400px; height: 50px;">Go to the login page</button></a>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/logout.js') }}"></script>
+{% endblock body %}

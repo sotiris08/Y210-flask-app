@@ -1,0 +1,15 @@
+{% extends "email_base.html" %}
+
+{% block body %}
+    <div style="padding-top: 20px; font-size: 50px; font-family: Arial">
+        <h1>Hi {{ name }}!</h1>
+        <h5 style="margin-top: -10px">Here is your MFA code!</h5>
+    </div>
+    <div style="padding-top: 50px; padding-bottom: 50px; font-size: 25px; font-family: Arial">
+        Your MFA code is: {{ code }}
+        <br>
+        This code is valid for 5 minutes
+        <br><br>
+        If you did not make this request then please ignore this email.
+    </div>
+{% endblock body %}

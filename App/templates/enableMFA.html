@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Enable Multi-factor authentication
+{% endblock title %}
+
+{% block body %}
+    <div style="margin-top: -100px" class="row">
+        <div class="row" style="width: 100%; text-align: center">
+            <h1>Let's enable Multi-factor authentication!</h1>
+        </div>
+        <div class="row" style="width: 100%; text-align: center">
+            <h6 style="color: gray">Making your account more secure</h6>
+        </div>
+        <div class="row" style="width: 100%; text-align: center; margin-top: 10px">
+            <h5 style="color: gray">Use an app like Google Authenticator and enter the following code or scan the QR code.</h5>
+        </div>
+        <img style="width: 50%; margin-left: 25% " src="{{ img }}" alt="">
+        <div class="row" style="margin-top: 0px; margin-left: 10%; background-color: gray; color: white; width: 500px; height: 50px; font-size: 20px; text-align: center; display: block; line-height: 50px">
+            {{ token }}
+        </div>
+        <div class="row">
+            <div class="col-md-12", style="text-align: center; margin-top: 15px">
+                Please enter the 6-digit code that you see on your phone.
+            </div>
+            <form class="row". style="margin-top: 5px", action="#", method="post">
+                {{ form.hidden_tag() }}
+              <div class="form-floating mb-6", style="margin-left: 25%; width: 200px">
+                <!--<input type="text" class="form-control" id="floatingInput" placeholder="MFA Code">
+                  <label for="floatingInput" >MFA Code</label>-->
+                  {{ form.MFACode(class="form-control", id="floatingInput", placeholder="MFA Code") }}
+                  {{ form.MFACode.label(for="floatingInput") }}
+
+                  {% if form.MFACode.errors %}
+                      <div class="alert alert-danger" role="alert">
+                        <ul>
+                            {% for e in form.email.errors %}
+                                <li>
+                                    {{ e | safe }}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                      </div>
+                  {% endif %}
+
+              </div>
+              <div class="form-floating mb-6", style="margin-right: 2%; width: 200px">
+                <!--<button type="submit" class="btn btn-primary mb-3" style="height: 60px">Confirm MFA Code</button>-->
+                  {{ form.submit(class="btn btn-primary mb-3", style="height: 60px") }}
+              </div>
+            </form>
+        </div>
+        <a href="{{ url_for('dashboard') }}"><button type="button" class="btn btn-outline-secondary" style="width: 70%; height: 60px; font-size: 20px; text-align: center; margin-top: 10px; margin-left: 15%; margin-right: 15%">Back to Dashboard</button></a>
+    </div>
+{% endblock body %}
