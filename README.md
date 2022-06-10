@@ -178,7 +178,7 @@
 pip install -r requirements.txt
 ```
 
-Στην συνέχεια πρέπει να δώσουμε τιμές στις μεταβλητές που βρίσκονται στο αρχείο `.env`. Δείτε [Μεταβλητές Συστήματος](https://github.com/sotiris08/Y210-flask-app/blob/main/README.md#%CE%BC%CE%B5%CF%84%CE%B1%CE%B2%CE%BB%CE%B7%CF%84%CE%AD%CF%82-%CF%83%CF%85%CF%83%CF%84%CE%AE%CE%BC%CE%B1%CF%84%CE%BF%CF%82)
+Στην συνέχεια πρέπει να δώσετε τιμές στις μεταβλητές που βρίσκονται στο αρχείο `.env`. Δείτε [Μεταβλητές Συστήματος](https://github.com/sotiris08/Y210-flask-app/blob/main/README.md#%CE%BC%CE%B5%CF%84%CE%B1%CE%B2%CE%BB%CE%B7%CF%84%CE%AD%CF%82-%CF%83%CF%85%CF%83%CF%84%CE%AE%CE%BC%CE%B1%CF%84%CE%BF%CF%82)
 
 Είμαστε έτοιμοι!:tada: Τρέχουμε το πρόγραμμά μας `app.py`:
 ```
