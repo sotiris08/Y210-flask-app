@@ -201,7 +201,7 @@ python app.py
   </tr>
   <tr>
     <td>PORT</td>
-    <td>Η πόρτα στην οποιά θα τρέξει η εφαρμογή. Απαιτήται Port Forwarding.</td>
+    <td>Η πόρτα στην οποία θα τρέξει η εφαρμογή. Απαιτείται Port Forwarding.</td>
     <td>1 - 65535</td>
   </tr>
   <tr>
@@ -241,18 +241,18 @@ python app.py
   </tr>
   <tr>
     <td>EMAIL_SMTP_SERVER_LOGIN</td>
-    <td>Το usename με τον οποιο πρέπει να γίνει η σύνδεση στον SMTP Server</td>
-    <td>Το usename με τον οποιο πρέπει να γίνει η σύνδεση στον SMTP Server</td>
+    <td>Το usename με το οποίο πρέπει να γίνει η σύνδεση στον SMTP Server</td>
+    <td>Το usename με το οποίο πρέπει να γίνει η σύνδεση στον SMTP Server</td>
   </tr>
   <tr>
     <td>EMAIL_SMTP_SERVER_PASSWORD</td>
-    <td>Ο κωδικός με τον οποιο πρέπει να γίνει η σύνδεση στον SMTP Server</td>
-    <td>Ο κωδικός με τον οποιο πρέπει να γίνει η σύνδεση στον SMTP Server</td>
+    <td>Ο κωδικός με τον οποίο πρέπει να γίνει η σύνδεση στον SMTP Server</td>
+    <td>Ο κωδικός με τον οποίο πρέπει να γίνει η σύνδεση στον SMTP Server</td>
   </tr>
   <tr>
     <td>GOOGLE_CLIENT_ID</td>
-    <td>Το string που πείρατε από το Google Cloud Platform</td>
-    <td>Το string που πείρατε από το Google Cloud Platform</td>
+    <td>Το string που πήρατε από το Google Cloud Platform</td>
+    <td>Το string που πήρατε από το Google Cloud Platform</td>
   </tr>
   <tr>
     <td>GOOGLE_SECRET_FILE</td>
@@ -261,13 +261,13 @@ python app.py
   </tr>
   <tr>
     <td>GOOGLE_REDIRECT_URL</td>
-    <td>Η διευθυνση στην οποία θα επιστρέφει ο χρήστης αφού συνδεθεί μέσω Google.</td>
+    <td>Η διεύθυνση στην οποία θα επιστρέφει ο χρήστης αφού συνδεθεί μέσω Google.</td>
     <td>/signInWithGoogle/auth</td>
   </tr>
 </table>
 
 ## Σύνδεση με Google
-Για να λειτουργίσει η δυνατότητα σύνδεσης μέσω Google πρέπει να δηλωθούν στο αρχείο `.env` οι μεταβλητές `GOOGLE_CLIENT_ID` και `GOOGLE_SECRET_FILE`. Για να βρούμε αυτές τις τιμές:
+Για να λειτουργήσει η δυνατότητα σύνδεσης μέσω Google πρέπει να δηλωθούν στο αρχείο `.env` οι μεταβλητές `GOOGLE_CLIENT_ID` και `GOOGLE_SECRET_FILE`. Για να βρούμε αυτές τις τιμές:
 
 1. Μεταβαίνουμε στο [Google Cloud Platform](https://console.cloud.google.com/)
 2. Επιλέγουμε το project που θέλουμε να χρησιμοποιήσουμε ή δημιουργούμε ένα νέο
@@ -289,4 +289,4 @@ python app.py
 9. Στο παράθυρο που εμφανίζεται υπάρχει το `GOOGLE_CLIENT_ID` και μπορούμε να αποθηκεύσουμε το CLIENT SECRET
 
 ## Διαχειριστές
-Η εφαρμογή γίνεται εύκολα κατανοητη. Αξίζει όμως να αναφέρουμε ότι υπάρχει η σελίδα `/admin` στην οποία έχουν πρόσβαση μόνο οι 'διαχειριστές'. Για να γίνει ένας χρήστης διαχειριστής πρέπει το κλειδί `isAdmin` που αντισοιχεί στον λογαριασμό του, και μπορεί να βρεθεί στο αρχείο `/App/data/users.json`, να είναι ορισμένο σε `true`
+Η εφαρμογή γίνεται εύκολα κατανοητή. Αξίζει όμως να αναφέρουμε ότι υπάρχει η σελίδα `/admin` στην οποία έχουν πρόσβαση μόνο οι 'διαχειριστές'. Για να γίνει ένας χρήστης διαχειριστής πρέπει το κλειδί `isAdmin` που αντισοιχεί στον λογαριασμό του, και μπορεί να βρεθεί στο αρχείο `/App/data/users.json`, να είναι ορισμένο σε `true`
