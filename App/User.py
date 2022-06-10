@@ -141,9 +141,6 @@ class User(UserMixin):
             password = password+id
             password = bcrypt.generate_password_hash(password).decode('utf-8')
 
-        if not isAdmin:
-            isAdmin = makeAdmin(email)
-
         user = {
             "name": name,
             "email": email,
@@ -501,6 +498,3 @@ class User(UserMixin):
 
     def get_id(self):
         return self.uuid
-
-def makeAdmin(email):
-    return ("@upatras.gr" in email) or email == "ssveronis@gmail.com"
